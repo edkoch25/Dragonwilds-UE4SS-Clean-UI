@@ -47,6 +47,15 @@ Full instructions are included as `install.txt` in the download.
 
 Delete `ue4ss\Mods\cleanui` and restart the game.
 
-### Source
+### Source Code
 
+Clean UI's original source code is open source and licensed under the MIT License.
+
+The MIT License applies to the original Clean UI source code only and does not grant rights to Jagex-owned intellectual property.
+
+Source code:
 https://github.com/edkoch25/Dragonwilds-UE4SS-Clean-UI
+
+### Jagex Attribution
+
+Created using intellectual property belonging to Jagex Limited under the terms of Jagex's Fan Content Policy. This content is not endorsed by or affiliated with Jagex.

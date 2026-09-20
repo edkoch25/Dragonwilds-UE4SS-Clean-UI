@@ -1,0 +1,59 @@
+Clean UI v1.0.0 - Installation Instructions
+==============================================
+
+REQUIREMENT
+-----------
+A working UE4SS installation for RuneScape: Dragonwilds.
+
+RSDWTools / RSDW Dev Kit is NOT required.
+
+
+INSTALL
+-------
+1. Extract this ZIP file.
+
+2. Copy the included "CleanUI" folder into:
+
+   RSDragonwilds\Binaries\Win64\ue4ss\Mods\
+
+3. Confirm the installed files look like this:
+
+   ue4ss
+   \-- Mods
+       \-- CleanUI
+           |-- enabled.txt
+           \-- Scripts
+               \-- main.lua
+
+4. Start RuneScape: Dragonwilds.
+
+
+WHAT CLEAN UI DOES
+------------------
+During normal gameplay it hides:
+
+- The 8-slot quick-access/hotbar row
+- The boxed R radial prompt
+- The circular/mouse-wheel radial graphic
+- The small white radial indicator arrow
+- The normal bottom-right input legend
+
+Opening the inventory restores its normal quick-access row.
+Closing the inventory hides the gameplay row again.
+
+The actual quick-access radial selector remains functional,
+including controller use.
+
+
+UNINSTALL
+---------
+Delete:
+
+   ue4ss\Mods\CleanUI
+
+Then restart the game.
+
+
+PROJECT
+-------
+https://github.com/edkoch25/Dragonwilds-UE4SS-Clean-UI

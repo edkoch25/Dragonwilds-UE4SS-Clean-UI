@@ -79,4 +79,10 @@ See [changelog.md](changelog.md) for release notes.
 
 ## License
 
-Released under the MIT License. See [license](license).
+The original Clean UI source code in this repository is released under the MIT License. See [license](license).
+
+RuneScape: Dragonwilds and Jagex intellectual property remain subject to Jagex's applicable terms and policies. The MIT License applies only to the original Clean UI source code and does not grant rights to Jagex-owned intellectual property.
+
+## Jagex attribution
+
+Created using intellectual property belonging to Jagex Limited under the terms of Jagex's Fan Content Policy. This content is not endorsed by or affiliated with Jagex.

@@ -4,8 +4,11 @@
 
 local inventoryBody = nil
 local quickBar = nil
+
 local initialized = false
-local hookRegistered = false
+local inventoryHookRegistered = false
+local opacityHookRegistered = false
+local correctingQuickBar = false
 
 local function isValid(obj)
     if obj == nil then return false end
@@ -26,43 +29,78 @@ local function getFullName(obj)
     return ""
 end
 
+local function inventoryIsOpen()
+    if not isValid(inventoryBody) then return false end
+    local ok, visibility = pcall(function() return inventoryBody:GetVisibility() end)
+    return ok and visibility == 0
+end
+
 local function updateQuickBar()
     if not isValid(inventoryBody) or not isValid(quickBar) then return end
+    local targetOpacity = inventoryIsOpen() and 1.0 or 0.0
 
-    local ok, visibility = pcall(function()
-        return inventoryBody:GetVisibility()
-    end)
-    if not ok then return end
-
-    pcall(function()
-        quickBar:SetRenderOpacity(visibility == 0 and 1.0 or 0.0)
-    end)
+    correctingQuickBar = true
+    pcall(function() quickBar:SetRenderOpacity(targetOpacity) end)
+    correctingQuickBar = false
 end
 
 local function delayedQuickBarUpdate()
     ExecuteWithDelay(50, function()
         ExecuteInGameThread(updateQuickBar)
     end)
-
     ExecuteWithDelay(300, function()
         ExecuteInGameThread(updateQuickBar)
     end)
 end
 
 local function registerInventoryHook()
-    if hookRegistered then return end
+    if inventoryHookRegistered then return end
 
     local ok = pcall(function()
         RegisterHook(
             "/Script/Dominion.InputManagerUIAPI:ToggleWidget",
             function(Context) end,
-            function(Context)
-                delayedQuickBarUpdate()
-            end
+            function(Context) delayedQuickBarUpdate() end
         )
     end)
 
-    if ok then hookRegistered = true end
+    if ok then inventoryHookRegistered = true end
+end
+
+local function registerOpacityHook()
+    if opacityHookRegistered then return end
+
+    local ok = pcall(function()
+        RegisterHook(
+            "/Script/UMG.Widget:SetRenderOpacity",
+            function(Context, InOpacity)
+                if correctingQuickBar
+                    or not initialized
+                    or not isValid(quickBar)
+                    or not isValid(inventoryBody) then
+                    return
+                end
+
+                local widget = Context
+                if not isValid(widget) or widget ~= quickBar or inventoryIsOpen() then
+                    return
+                end
+
+                ExecuteWithDelay(1, function()
+                    ExecuteInGameThread(function()
+                        if not inventoryIsOpen() and isValid(quickBar) then
+                            correctingQuickBar = true
+                            pcall(function() quickBar:SetRenderOpacity(0.0) end)
+                            correctingQuickBar = false
+                        end
+                    end)
+                end)
+            end,
+            function(Context, InOpacity) end
+        )
+    end)
+
+    if ok then opacityHookRegistered = true end
 end
 
 local function initialize()
@@ -81,30 +119,19 @@ local function initialize()
 
         for _, candidate in ipairs(panels) do
             if isValid(candidate) then
-                local okContent, content = pcall(function()
-                    return candidate.InventoryContent
-                end)
+                local okContent, content = pcall(function() return candidate.InventoryContent end)
 
                 if okContent and isValid(content) then
-                    local okBar, candidateBar = pcall(function()
-                        return content.QuickAccessBar
-                    end)
-                    local okBody, candidateBody = pcall(function()
-                        return content.InventoryBody_Items
-                    end)
-                    local okPrompt, candidatePrompt = pcall(function()
-                        return candidate.QuickAccessRadialPrompt
-                    end)
-                    local okImage, candidateImage = pcall(function()
-                        return candidate.QuickAccessRadialImage
-                    end)
+                    local okBar, candidateBar = pcall(function() return content.QuickAccessBar end)
+                    local okBody, candidateBody = pcall(function() return content.InventoryBody_Items end)
+                    local okPrompt, candidatePrompt = pcall(function() return candidate.QuickAccessRadialPrompt end)
+                    local okImage, candidateImage = pcall(function() return candidate.QuickAccessRadialImage end)
 
                     if okBar and okBody and okPrompt and okImage
                         and isValid(candidateBar)
                         and isValid(candidateBody)
                         and isValid(candidatePrompt)
                         and isValid(candidateImage) then
-
                         mainPanel = candidate
                         quickBar = candidateBar
                         inventoryBody = candidateBody
@@ -160,19 +187,15 @@ local function initialize()
             return
         end
 
-        -- The game may restore this prompt's visibility after radial use.
-        -- Opacity 0 persists, preventing the small arrow from returning.
-        pcall(function()
-            radialPrompt:SetRenderOpacity(0.0)
-        end)
+        pcall(function() radialPrompt:SetRenderOpacity(0.0) end)
         collapse(radialPrompt)
-
         collapse(radialImage)
         collapse(radialKBM)
         collapse(inputsLegend)
 
         updateQuickBar()
         initialized = true
+        registerOpacityHook()
     end)
 end
 

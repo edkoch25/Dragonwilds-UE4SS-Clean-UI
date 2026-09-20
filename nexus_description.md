@@ -4,7 +4,7 @@
 
 A lightweight UE4SS HUD cleaner for **RuneScape: Dragonwilds**.
 
-Clean UI removes several persistent gameplay HUD elements while keeping the inventory and quick-access radial selector working normally.
+Clean UI removes persistent gameplay HUD clutter while preserving normal inventory behavior and the fully functional quick-access radial selector.
 
 ### Removes during gameplay
 
@@ -14,32 +14,39 @@ Clean UI removes several persistent gameplay HUD elements while keeping the inve
 - small white radial indicator arrow
 - normal bottom-right input legend
 
-The quick-access row automatically returns when the inventory is opened and hides again when the inventory closes.
+The quick-access row automatically returns while the inventory is open and hides again when the inventory closes. Clean UI also prevents the game from restoring the gameplay hotbar after selecting or equipping inventory items.
 
-The actual radial selector is left untouched and remains fully functional, including controller use.
+The actual radial selector remains fully functional, including controller use.
 
 ### Lightweight by design
 
-Clean UI does not use a Tick hook, per-frame widget scanning, a watchdog, or continuous polling after initialization. Widget discovery stops once initialization succeeds. Runtime behavior is event-driven.
+Clean UI uses no Tick hook, per-frame widget scanning, watchdog, or continuous polling after initialization. Runtime behavior is event-driven, with a targeted opacity hook that ignores unrelated widgets.
 
 ### Requirements
 
-A working UE4SS installation for RuneScape: Dragonwilds.
+- RuneScape: Dragonwilds on PC
+- a working UE4SS installation for RuneScape: Dragonwilds
 
 **RSDWTools / RSDW Dev Kit is not required.**
 
 ### Installation
 
-Extract the included `CleanUI` folder to:
+Extract the included `cleanui` folder to:
 
 `RSDragonwilds\Binaries\Win64\ue4ss\Mods\`
 
-Restart the game.
+The included `enabled.txt` should enable the mod automatically. If your UE4SS setup does not load it, add:
+
+`cleanui : 1`
+
+to `ue4ss\Mods\mods.txt`, then restart the game.
+
+Full instructions are included as `install.txt` in the download.
 
 ### Uninstall
 
-Delete the `CleanUI` folder from `ue4ss\Mods` and restart the game.
+Delete `ue4ss\Mods\cleanui` and restart the game.
 
 ### Source
 
-Source code and release history are maintained on GitHub.
+https://github.com/edkoch25/Dragonwilds-UE4SS-Clean-UI

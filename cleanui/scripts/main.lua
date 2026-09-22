@@ -1,4 +1,4 @@
--- Clean UI v1.0.2
+-- Clean UI v1.0.3
 -- Lightweight HUD cleanup for RuneScape: Dragonwilds using UE4SS.
 -- No Tick hook, watchdog, or continuous polling after initialization.
 
@@ -154,6 +154,7 @@ local function initialize()
         if not isValid(inputsLegend) then ExecuteWithDelay(1000, initialize); return end
 
         pcall(function() radialPrompt:SetRenderOpacity(0.0) end)
+        pcall(function() inputsLegend:SetRenderOpacity(0.0) end)
         collapse(radialPrompt); collapse(radialImage); collapse(radialKBM); collapse(inputsLegend)
         updateQuickBar()
         initialized = true

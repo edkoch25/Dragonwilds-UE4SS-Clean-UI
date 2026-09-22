@@ -18,6 +18,10 @@ The quick-access row automatically returns while the inventory is open and hides
 
 The actual radial selector remains fully functional, including controller use.
 
+### Version 1.0.3
+
+Fixes an issue where the bottom-right input legend could reappear after opening and closing the map with a controller. The legend now remains hidden through map and UI transitions without adding polling, per-frame processing, or additional runtime hooks.
+
 ### Version 1.0.2
 
 Fixes an issue where the 8-slot quick-access bar could remain visible in gameplay after selecting an item from the inventory quick-access row with a controller and closing the inventory with B / Circle. The fix remains fully event-driven with no continuous polling.

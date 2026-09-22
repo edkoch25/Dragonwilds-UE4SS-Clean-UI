@@ -18,6 +18,10 @@ The quick-access row automatically returns while the inventory is open and hides
 
 The actual radial selector remains fully functional, including controller use.
 
+### Version 1.0.1
+
+Fixes an issue where the 8-slot quick-access bar could remain visible in gameplay after selecting an item from the inventory quick-access row with a controller and closing the inventory with B / Circle. The fix remains fully event-driven with no continuous polling.
+
 ### Lightweight by design
 
 Clean UI uses no Tick hook, per-frame widget scanning, watchdog, or continuous polling after initialization. Runtime behavior is event-driven, with a targeted opacity hook that ignores unrelated widgets.

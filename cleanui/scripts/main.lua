@@ -1,4 +1,4 @@
--- Clean UI v1.0.1
+-- Clean UI v1.0.2
 -- Lightweight HUD cleanup for RuneScape: Dragonwilds using UE4SS.
 -- No Tick hook, watchdog, or continuous polling after initialization.
 

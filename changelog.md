@@ -7,6 +7,13 @@
 - uses stable Unreal object-path identity for targeted quick-bar opacity protection
 - retains the lightweight design with no Tick hook, watchdog, per-frame scanning, or continuous polling after initialization
 
+## 1.0.1 - 2026-09-21
+
+- general performance and efficiency enhancements
+- refined event handling to reduce unnecessary UI processing
+- improved internal quick-access bar state handling for smoother HUD behavior
+- minor code cleanup and reliability improvements
+
 ## 1.0.0 - 2026-09-20
 
 Initial public release.

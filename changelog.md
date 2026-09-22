@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.1 - 2026-09-22
+## 1.0.2 - 2026-09-22
 
 - fixes the gameplay 8-slot quick-access bar remaining visible after selecting an inventory quick-access item with a controller and closing the inventory with B / Circle
 - adds event-driven handling for the game's controller/back inventory close path

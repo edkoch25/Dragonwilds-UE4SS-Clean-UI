@@ -25,7 +25,7 @@ Clean UI is event-driven and designed for minimal runtime overhead:
 - no watchdog
 - no continuous polling after initialization
 - widget discovery stops after successful initialization
-- inventory transitions use two short delayed state updates
+- inventory open/close transitions use two short delayed state updates, including the controller back/close path
 - a targeted opacity hook ignores all widgets except the already-cached quick-access bar and only corrects it when the game attempts to restore it during gameplay
 
 ## Requirements
@@ -73,7 +73,7 @@ The cleanup is not tied to a keyboard hotkey. The radial selector continues to w
 
 ## Version
 
-Current release: **1.0.0**
+Current release: **1.0.1**
 
 See [changelog.md](changelog.md) for release notes.
 

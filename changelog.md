@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.3 - 2026-09-22
+
+- fixes the bottom-right input legend reappearing after opening and closing the map with a controller
+- keeps the input legend permanently hidden even if the game restores its visibility during later UI transitions
+- preserves the existing event-driven design with no additional hooks, polling, watchdog, or per-frame processing
+
 ## 1.0.2 - 2026-09-22
 
 - fixes the gameplay 8-slot quick-access bar remaining visible after selecting an inventory quick-access item with a controller and closing the inventory with B / Circle

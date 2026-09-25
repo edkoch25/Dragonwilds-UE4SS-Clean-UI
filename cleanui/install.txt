@@ -1,0 +1,31 @@
+Clean UI v1.0.4
+
+INSTALL
+Copy the cleanui folder into:
+RSDragonwilds\Binaries\Win64\ue4ss\Mods\
+
+The resulting path should include:
+ue4ss\Mods\cleanui\Scripts\main.lua
+
+CONFIGURATION
+Clean UI works without Mod Menu. Edit config.txt and restart the game to apply changes.
+
+Optional Mod Menu integration is also included through modmenu.json. If you have the compatible Mod Menu installed, the same settings can be changed in game. Changes still apply after restarting the game.
+
+Clean UI intentionally does not continuously poll for setting changes. Configuration is loaded once at startup to keep runtime behavior lightweight and event-driven.
+
+DEFAULTS
+Hide Gameplay Hotbar: ON
+Hide Bottom-right Input Legend: ON
+Hide Radial Button Prompts: ON
+Hide Radial Indicator: ON
+Hide Compass: OFF
+Show Hotbar in Inventory: ON
+Show Hotbar in Storage: ON
+
+If UE4SS does not enable the mod automatically, add:
+cleanui : 1
+to ue4ss\Mods\mods.txt and restart the game.
+
+UNINSTALL
+Delete ue4ss\Mods\cleanui and restart the game.

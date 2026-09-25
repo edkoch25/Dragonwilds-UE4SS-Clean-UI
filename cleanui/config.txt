@@ -1,0 +1,12 @@
+# Clean UI v1.0.4
+# Settings are loaded once when the mod starts.
+# Changes made manually or through Mod Menu require a game restart.
+
+HideGameplayHotbar=true
+HideInputLegend=true
+HideRadialButtonPrompts=true
+HideRadialIndicator=true
+HideCompass=false
+
+ShowHotbarInInventory=true
+ShowHotbarInStorage=true

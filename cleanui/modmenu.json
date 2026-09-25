@@ -4,16 +4,75 @@
   "name": "Clean UI",
   "author": "edkoch25",
   "version": "1.0.4",
-  "description": "Configure which HUD elements Clean UI hides. Changes apply after restarting the game.",
+  "description": "Configure which HUD elements Clean UI hides. Changes apply after restarting the game. Mod Menu is optional and required only for menu toggle access.",
   "settings": [
-    {"type":"header","text":"HUD"},
-    {"type":"toggle","key":"HideGameplayHotbar","label":"Hide Gameplay Hotbar","default":true,"restart":true},
-    {"type":"toggle","key":"HideInputLegend","label":"Hide Bottom-right Input Legend","default":true,"restart":true},
-    {"type":"toggle","key":"HideRadialButtonPrompts","label":"Hide Radial Button Prompts","default":true,"restart":true},
-    {"type":"toggle","key":"HideRadialIndicator","label":"Hide Radial Indicator","default":true,"restart":true},
-    {"type":"toggle","key":"HideCompass","label":"Hide Compass","default":false,"restart":true},
-    {"type":"header","text":"Context"},
-    {"type":"toggle","key":"ShowHotbarInInventory","label":"Show Hotbar in Inventory","default":true,"restart":true},
-    {"type":"toggle","key":"ShowHotbarInStorage","label":"Show Hotbar in Storage","default":true,"restart":true}
+    {
+      "type": "header",
+      "text": "HUD"
+    },
+    {
+      "type": "toggle",
+      "key": "HideGameplayHotbar",
+      "label": "Hide Gameplay Hotbar",
+      "default": true,
+      "restart": true
+    },
+    {
+      "type": "toggle",
+      "key": "HideInputLegend",
+      "label": "Hide Bottom-right Input Legend",
+      "default": true,
+      "restart": true
+    },
+    {
+      "type": "toggle",
+      "key": "HideRadialButtonPrompts",
+      "label": "Hide Radial Button Prompts",
+      "default": true,
+      "restart": true
+    },
+    {
+      "type": "toggle",
+      "key": "HideRadialIndicator",
+      "label": "Hide Radial Indicator",
+      "default": true,
+      "restart": true
+    },
+    {
+      "type": "toggle",
+      "key": "HideCompass",
+      "label": "Hide Compass",
+      "default": false,
+      "restart": true
+    },
+    {
+      "type": "header",
+      "text": "Context"
+    },
+    {
+      "type": "toggle",
+      "key": "ShowHotbarInInventory",
+      "label": "Show Hotbar in Inventory",
+      "default": true,
+      "restart": true
+    },
+    {
+      "type": "toggle",
+      "key": "ShowHotbarInStorage",
+      "label": "Show Hotbar in Storage",
+      "default": true,
+      "restart": true
+    },
+    {
+      "type": "header",
+      "text": "PVP / Multiplayer"
+    },
+    {
+      "type": "toggle",
+      "key": "HideOtherPlayerMarkers",
+      "label": "Hide Other Player Markers (BETA - needs testing)",
+      "default": false,
+      "restart": true
+    }
   ]
 }

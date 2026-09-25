@@ -16,6 +16,16 @@ The quick-access bar automatically returns while the inventory is open and can n
 
 The actual quick-access radial selector remains fully functional.
 
+## Configuration
+
+Version 1.0.4 adds configurable HUD behavior. Defaults preserve the established Clean UI experience while adding hotbar visibility for storage/chest interfaces.
+
+Available options include the gameplay hotbar, bottom-right input legend, radial prompts/indicator, compass, inventory hotbar, and storage hotbar.
+
+**Hide Other Player Markers (BETA - needs testing)** is also included for community testing and is OFF by default. Multiplayer/PvP testers are encouraged to report whether remote-player markers disappear from the map/compass and include relevant `[CleanUI 1.0.4 Beta][MapIcon]` lines from `UE4SS.log`.
+
+Clean UI intentionally loads configuration once at startup rather than continuously polling settings.
+
 ## Performance
 
 Clean UI is event-driven and designed for minimal runtime overhead:
@@ -35,6 +45,8 @@ Clean UI is event-driven and designed for minimal runtime overhead:
 - a working UE4SS installation for RuneScape: Dragonwilds
 
 RSDWTools / RSDW Dev Kit is **not required**.
+
+**Mod Menu is optional.** Clean UI works without it using `config.txt`. Mod Menu v1.0.9 or compatible is required only if you want in-game menu toggle access. Settings changed through Mod Menu or `config.txt` take effect after restarting the game.
 
 ## Installation
 

@@ -12,7 +12,7 @@ During normal gameplay, Clean UI hides:
 - the small white radial indicator arrow
 - the normal bottom-right input legend
 
-The quick-access bar automatically returns while the inventory is open and hides again when the inventory closes. Clean UI also prevents the game from restoring the gameplay hotbar after selecting or equipping inventory items.
+The quick-access bar automatically returns while the inventory is open and can now also remain visible while storage/chest interfaces are open. Clean UI prevents the game from restoring the gameplay hotbar after returning to normal gameplay.
 
 The actual quick-access radial selector remains fully functional.
 
@@ -52,11 +52,33 @@ ue4ss
     └── cleanui
         ├── enabled.txt
         ├── install.txt
+        ├── config.txt
+        ├── modmenu.json
         └── scripts
             └── main.lua
 ```
 
 The included `enabled.txt` enables Clean UI without requiring a manual `mods.txt` edit. If your UE4SS setup does not load the mod automatically, add `cleanui : 1` to `ue4ss\Mods\mods.txt` and restart the game.
+
+## Configuration
+
+Version 1.0.4 adds configurable HUD behavior. The default settings are:
+
+- Hide Gameplay Hotbar: ON
+- Hide Bottom-right Input Legend: ON
+- Hide Radial Button Prompts: ON
+- Hide Radial Indicator: ON
+- Hide Compass: OFF
+- Show Hotbar in Inventory: ON
+- Show Hotbar in Storage: ON
+
+Edit `config.txt` and restart the game to apply changes.
+
+### Optional Mod Menu integration
+
+Clean UI supports the optional Mod Menu for easier in-game configuration. Mod Menu is **not required**. Settings changed through Mod Menu take effect after restarting the game.
+
+Clean UI intentionally does not continuously poll Mod Menu for configuration changes. This preserves the lightweight, event-driven runtime design.
 
 ## Uninstall
 
@@ -74,7 +96,7 @@ The cleanup is not tied to a keyboard hotkey. The radial selector continues to w
 
 ## Version
 
-Current release: **1.0.3**
+Current release: **1.0.4**
 
 See [changelog.md](changelog.md) for release notes.
 

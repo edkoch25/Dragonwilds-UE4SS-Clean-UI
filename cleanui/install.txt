@@ -8,6 +8,9 @@ The resulting path should include:
 ue4ss\Mods\cleanui\Scripts\main.lua
 
 CONFIGURATION
+For in-game menu toggle access, Mod Menu v1.0.9 or compatible is required and must be installed separately.
+Mod Menu is optional for Clean UI itself; without it, edit config.txt directly.
+
 Clean UI works without Mod Menu. Edit config.txt and restart the game to apply changes.
 
 Optional Mod Menu integration is also included through modmenu.json. If you have the compatible Mod Menu installed, the same settings can be changed in game. Changes still apply after restarting the game.
@@ -29,3 +32,10 @@ to ue4ss\Mods\mods.txt and restart the game.
 
 UNINSTALL
 Delete ue4ss\Mods\cleanui and restart the game.
+
+
+BETA - COMMUNITY TESTING
+Hide Other Player Markers is experimental and OFF by default.
+If you can test multiplayer/PvP, enable it, restart the game, and report whether remote-player markers disappear from the map/compass.
+Please include relevant UE4SS.log lines containing:
+[CleanUI 1.0.4 Beta][MapIcon]

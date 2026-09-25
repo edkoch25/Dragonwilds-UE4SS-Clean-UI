@@ -2,6 +2,18 @@
 
 ## 1.0.4 - 2026-09-25
 
+- adds configurable HUD settings through config.txt
+- adds optional Mod Menu integration for in-game toggle access; Mod Menu v1.0.9 or compatible is required only for menu-based configuration
+- adds an optional Hide Compass setting
+- adds configurable hotbar visibility while inventory is open
+- adds configurable hotbar visibility while storage/chest interfaces are open
+- adds Hide Other Player Markers (BETA - needs testing), OFF by default, for community multiplayer/PvP testing
+- beta player-marker mode records targeted map-icon metadata in UE4SS.log to help validate and refine map/compass coverage
+- settings are loaded once at startup and require a game restart; no continuous settings polling is used
+- tested core 1.0.4 HUD, compass, inventory, and storage behavior with RuneScape: Dragonwilds 1.0.0.5
+
+## 1.0.4 - 2026-09-25
+
 - adds configurable Clean UI settings through `config.txt`
 - adds optional Mod Menu integration; Mod Menu is not required
 - adds an optional Hide Compass setting

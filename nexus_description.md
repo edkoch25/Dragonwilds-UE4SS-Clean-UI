@@ -14,9 +14,17 @@ Clean UI removes persistent gameplay HUD clutter while preserving normal invento
 - small white radial indicator arrow
 - normal bottom-right input legend
 
-The quick-access row automatically returns while the inventory is open and hides again when the inventory closes. Clean UI also prevents the game from restoring the gameplay hotbar after selecting or equipping inventory items.
+The quick-access row automatically returns while the inventory is open and can now also remain visible while storage/chest interfaces are open. Clean UI prevents the game from restoring the gameplay hotbar after returning to normal gameplay.
 
 The actual radial selector remains fully functional, including controller use.
+
+### Version 1.0.4
+
+Adds configurable HUD options through `config.txt` plus optional Mod Menu integration. You can independently control the gameplay hotbar, bottom-right input legend, radial button prompts, radial indicator, and compass, and choose whether the hotbar appears in inventory and storage/chest interfaces.
+
+Mod Menu is optional. Settings are loaded once at startup and changes take effect after restarting the game, avoiding continuous configuration polling.
+
+Tested with RuneScape: Dragonwilds patch 1.0.0.5.
 
 ### Version 1.0.3
 
@@ -50,6 +58,12 @@ The included `enabled.txt` should enable the mod automatically. If your UE4SS se
 to `ue4ss\Mods\mods.txt`, then restart the game.
 
 Full instructions are included as `install.txt` in the download.
+
+### Configuration
+
+The included `config.txt` works without any additional mod. Version 1.0.4 also includes optional Mod Menu integration through `modmenu.json`.
+
+Default settings keep the established Clean UI gameplay cleanup, keep the compass visible, show the hotbar in inventory, and show the hotbar while using storage/chests. Restart the game after changing settings.
 
 ### Uninstall
 

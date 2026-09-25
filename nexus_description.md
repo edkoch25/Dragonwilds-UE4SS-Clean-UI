@@ -26,6 +26,16 @@ Mod Menu is optional. Settings are loaded once at startup and changes take effec
 
 Tested with RuneScape: Dragonwilds patch 1.0.0.5.
 
+### Version 1.0.4
+
+Adds configurable HUD settings, optional compass hiding, and configurable hotbar visibility in inventory and storage/chest interfaces.
+
+Clean UI now supports the optional **Mod Menu v1.0.9 or compatible** for convenient in-game toggle access. Mod Menu is required only for menu-based configuration; Clean UI itself still works without it through `config.txt`. All setting changes take effect after restarting the game, preserving the mod's lightweight event-driven design without continuous settings polling.
+
+**Hide Other Player Markers (BETA - needs testing)** is included as an OFF-by-default community test option for multiplayer/PvP users. Testers are encouraged to report whether remote-player markers disappear from the map/compass and include relevant `[CleanUI 1.0.4 Beta][MapIcon]` lines from `UE4SS.log`.
+
+Core 1.0.4 HUD, compass, inventory, and storage behavior has been tested with RuneScape: Dragonwilds 1.0.0.5.
+
 ### Version 1.0.3
 
 Fixes an issue where the bottom-right input legend could reappear after opening and closing the map with a controller. The legend now remains hidden through map and UI transitions without adding polling, per-frame processing, or additional runtime hooks.
@@ -44,6 +54,8 @@ Clean UI uses no Tick hook, per-frame widget scanning, watchdog, or continuous p
 - a working UE4SS installation for RuneScape: Dragonwilds
 
 **RSDWTools / RSDW Dev Kit is not required.**
+
+**Mod Menu v1.0.9 or compatible is required only if you want in-game menu toggle access.** It is optional for Clean UI itself.
 
 ### Installation
 

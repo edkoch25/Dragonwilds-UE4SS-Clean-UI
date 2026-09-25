@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.0.4 - 2026-09-25
+
+- adds configurable Clean UI settings through `config.txt`
+- adds optional Mod Menu integration; Mod Menu is not required
+- adds an optional Hide Compass setting
+- adds configurable Show Hotbar in Inventory behavior
+- adds Show Hotbar in Storage so the quick-access bar can remain visible while using chest/storage interfaces
+- settings are loaded once at startup and changes require a game restart
+- preserves the lightweight event-driven design with no Tick hook, watchdog, per-frame scanning, or continuous configuration polling
+- tested successfully with RuneScape: Dragonwilds patch 1.0.0.5
+
+
 ## 1.0.3 - 2026-09-22
 
 - fixes the bottom-right input legend reappearing after opening and closing the map with a controller

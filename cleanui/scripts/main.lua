@@ -9,7 +9,8 @@ local cfg = {
     HideRadialIndicator = true,
     HideCompass = false,
     ShowHotbarInInventory = true,
-    ShowHotbarInStorage = true
+    ShowHotbarInStorage = true,
+    HideOtherPlayerMarkers = false
 }
 
 local inventoryBody = nil
@@ -290,11 +291,102 @@ local function initialize()
     end)
 end
 
+
+
+-- BETA: other-player map/compass marker community test -----------------------
+-- OFF by default. Event-driven only. The SDK identifies OtherPlayerCharacter
+-- as EMapIconType 2, but the generic UMapIconComponent does not expose that
+-- Dominion enum directly. This conservative beta only hides a rendered map
+-- icon when live metadata explicitly identifies it as another player, while
+-- logging metadata so multiplayer/PvP reports can refine map/compass coverage.
+local playerMarkerSeen = {}
+
+local function safeValue(fn, fallback)
+    local ok, value = pcall(fn)
+    if ok and value ~= nil then return tostring(value) end
+    return fallback or ""
+end
+
+local function isExplicitOtherPlayerIcon(icon)
+    if not isValid(icon) then return false end
+    local category = safeValue(function() return icon.IconCategory end, "")
+    local owner = safeValue(function()
+        local obj = icon:GetOwner()
+        return isValid(obj) and obj:GetFullName() or ""
+    end, "")
+    local combined = string.lower(category .. " " .. owner)
+    return string.find(combined, "otherplayercharacter", 1, true) ~= nil
+        or string.find(combined, "other_player_character", 1, true) ~= nil
+end
+
+local function hideMatchingMapIconWidgets(icon)
+    if not cfg.HideOtherPlayerMarkers or not isExplicitOtherPlayerIcon(icon) then return end
+    local widgets = FindAllOf("WBP_Dominion_MinimapInternal_Icon_C")
+    if widgets == nil then return end
+    local iconName = getFullName(icon)
+    for _, widget in ipairs(widgets) do
+        if isValid(widget) then
+            local okComp, comp = pcall(function() return widget.MapIconComp end)
+            if okComp and isValid(comp) and getFullName(comp) == iconName then
+                pcall(function() widget:SetRenderOpacity(0.0) end)
+            end
+        end
+    end
+end
+
+local function inspectPlayerMarker(icon, reason)
+    if not cfg.HideOtherPlayerMarkers or not isValid(icon) then return end
+    hideMatchingMapIconWidgets(icon)
+
+    local fullName = getFullName(icon)
+    if fullName == "" then fullName = safeValue(function() return icon:GetName() end, "<unknown>") end
+    if reason == "startup" and playerMarkerSeen[fullName] then return end
+    playerMarkerSeen[fullName] = true
+
+    local category = safeValue(function() return icon.IconCategory end, "<unreadable>")
+    local label = safeValue(function() return icon:GetIconLabel() end, "")
+    local tooltip = safeValue(function() return icon:GetIconTooltipText() end, "")
+    local visible = safeValue(function() return icon:IsIconVisible() end, "")
+    local texture = safeValue(function()
+        local tex = icon:GetIconTexture()
+        return isValid(tex) and tex:GetFullName() or "<none>"
+    end, "<unreadable>")
+    local owner = safeValue(function()
+        local obj = icon:GetOwner()
+        return isValid(obj) and obj:GetFullName() or "<none>"
+    end, "<unreadable>")
+
+    print(string.format(
+        "[CleanUI 1.0.4 Beta][MapIcon][%s] Category=%s | Label=%s | Tooltip=%s | Visible=%s | Owner=%s | Texture=%s | Object=%s\n",
+        reason, category, label, tooltip, visible, owner, texture, fullName
+    ))
+end
+
+local function registerPlayerMarkerBeta()
+    if not cfg.HideOtherPlayerMarkers then return end
+
+    pcall(function()
+        NotifyOnNewObject("/Script/MinimapPlugin.MapIconComponent", function(icon)
+            ExecuteInGameThread(function() inspectPlayerMarker(icon, "created") end)
+        end)
+    end)
+
+    ExecuteWithDelay(7000, function()
+        ExecuteInGameThread(function()
+            local icons = FindAllOf("MapIconComponent")
+            if icons == nil then return end
+            for _, icon in ipairs(icons) do inspectPlayerMarker(icon, "startup") end
+        end)
+    end)
+end
+-- End beta other-player marker community test --------------------------------
+
 ExecuteWithDelay(1000, function()
     ExecuteInGameThread(function()
         registerInventoryHook()
         registerCloseHook()
         registerStorageHooks()
+        registerPlayerMarkerBeta()
     end)
 end)
 

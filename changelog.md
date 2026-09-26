@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.0.5 - 2026-09-26
+
+- replaces separate inventory/storage hotbar handling with one shared event-driven panel transition
+- Hide Gameplay Hotbar is now the single hotbar setting
+- hotbar automatically appears while inventory, storage/chests, crafting tables, cooking fires, spinning wheels, and other shared inventory/station panels are open
+- hotbar automatically hides again when those panels close, including B / Circle while focus remains on the storage side
+- removes Show Hotbar in Inventory and Show Hotbar in Storage settings
+- defers shared-panel opacity changes by 1 ms to avoid re-entrant UMG writes during panel transitions
+- keeps targeted gameplay hotbar resurrection protection
+- preserves the no-Tick, no-watchdog, no-continuous-polling design
+- updates optional Mod Menu integration for the simplified hotbar setting
+
 ## 1.0.4 - 2026-09-25
 
 - adds configurable HUD settings through config.txt

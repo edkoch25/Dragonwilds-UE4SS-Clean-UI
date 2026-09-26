@@ -14,9 +14,17 @@ Clean UI removes persistent gameplay HUD clutter while preserving normal invento
 - small white radial indicator arrow
 - normal bottom-right input legend
 
-The quick-access row automatically returns while the inventory is open and can now also remain visible while storage/chest interfaces are open. Clean UI prevents the game from restoring the gameplay hotbar after returning to normal gameplay.
+The quick-access row automatically returns while inventory, storage/chest, crafting, and processing-station interfaces are open, then hides again when those interfaces close. Clean UI prevents the game from restoring the hotbar during normal gameplay.
 
 The actual radial selector remains fully functional, including controller use.
+
+### Version 1.0.5
+
+Simplifies and expands contextual hotbar handling. **Hide Gameplay Hotbar** is now the single hotbar option: when enabled, the hotbar stays hidden during normal gameplay but automatically appears while using inventory, storage/chests, crafting tables, cooking fires, spinning wheels, and other interfaces that use the shared inventory/station panel.
+
+Closing those interfaces hides the hotbar again, including the controller B / Circle storage-close path while focus remains on the storage side.
+
+The separate **Show Hotbar in Inventory** and **Show Hotbar in Storage** options have been removed. The new shared transition remains event-driven with no Tick hook, watchdog, per-frame scan, or continuous configuration polling.
 
 ### Version 1.0.4
 
@@ -73,9 +81,9 @@ Full instructions are included as `install.txt` in the download.
 
 ### Configuration
 
-The included `config.txt` works without any additional mod. Version 1.0.4 also includes optional Mod Menu integration through `modmenu.json`.
+The included `config.txt` works without any additional mod. Version 1.0.5 also includes optional Mod Menu integration through `modmenu.json`.
 
-Default settings keep the established Clean UI gameplay cleanup, keep the compass visible, show the hotbar in inventory, and show the hotbar while using storage/chests. Restart the game after changing settings.
+Default settings keep the established Clean UI gameplay cleanup and keep the compass visible. With Hide Gameplay Hotbar enabled, the hotbar is automatically shown only while supported inventory/station interfaces are open. Restart the game after changing settings.
 
 ### Uninstall
 

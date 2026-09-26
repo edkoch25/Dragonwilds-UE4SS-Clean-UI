@@ -1,11 +1,11 @@
-Clean UI v1.0.4
+Clean UI v1.0.5
 
 INSTALL
 Copy the cleanui folder into:
 RSDragonwilds\Binaries\Win64\ue4ss\Mods\
 
 The resulting path should include:
-ue4ss\Mods\cleanui\Scripts\main.lua
+ue4ss\Mods\cleanui\scripts\main.lua
 
 CONFIGURATION
 For in-game menu toggle access, Mod Menu v1.0.9 or compatible is required and must be installed separately.
@@ -13,7 +13,7 @@ Mod Menu is optional for Clean UI itself; without it, edit config.txt directly.
 
 Clean UI works without Mod Menu. Edit config.txt and restart the game to apply changes.
 
-Optional Mod Menu integration is also included through modmenu.json. If you have the compatible Mod Menu installed, the same settings can be changed in game. Changes still apply after restarting the game.
+Hide Gameplay Hotbar is the single hotbar control. When ON, the hotbar is hidden during normal gameplay and automatically shown while inventory, storage/chests, crafting tables, cooking fires, spinning wheels, and other shared inventory/station panels are open. It hides again when those interfaces close.
 
 Clean UI intentionally does not continuously poll for setting changes. Configuration is loaded once at startup to keep runtime behavior lightweight and event-driven.
 
@@ -23,8 +23,7 @@ Hide Bottom-right Input Legend: ON
 Hide Radial Button Prompts: ON
 Hide Radial Indicator: ON
 Hide Compass: OFF
-Show Hotbar in Inventory: ON
-Show Hotbar in Storage: ON
+Hide Other Player Markers: OFF
 
 If UE4SS does not enable the mod automatically, add:
 cleanui : 1
@@ -33,9 +32,8 @@ to ue4ss\Mods\mods.txt and restart the game.
 UNINSTALL
 Delete ue4ss\Mods\cleanui and restart the game.
 
-
 BETA - COMMUNITY TESTING
 Hide Other Player Markers is experimental and OFF by default.
 If you can test multiplayer/PvP, enable it, restart the game, and report whether remote-player markers disappear from the map/compass.
 Please include relevant UE4SS.log lines containing:
-[CleanUI 1.0.4 Beta][MapIcon]
+[CleanUI 1.0.5 Beta][MapIcon]

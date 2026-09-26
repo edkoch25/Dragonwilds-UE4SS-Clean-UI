@@ -1,4 +1,4 @@
-# Clean UI v1.0.4
+# Clean UI v1.0.5
 # Settings are loaded once when the mod starts.
 # Changes made manually or through Mod Menu require a game restart.
 
@@ -7,6 +7,4 @@ HideInputLegend=true
 HideRadialButtonPrompts=true
 HideRadialIndicator=true
 HideCompass=false
-
-ShowHotbarInInventory=true
-ShowHotbarInStorage=true
+HideOtherPlayerMarkers=false

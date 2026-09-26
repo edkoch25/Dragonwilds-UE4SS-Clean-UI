@@ -12,15 +12,15 @@ During normal gameplay, Clean UI hides:
 - the small white radial indicator arrow
 - the normal bottom-right input legend
 
-The quick-access bar automatically returns while the inventory is open and can now also remain visible while storage/chest interfaces are open. Clean UI prevents the game from restoring the gameplay hotbar after returning to normal gameplay.
+The quick-access bar automatically returns while inventory, storage/chest, crafting, and processing-station interfaces are open. Clean UI hides it again when those interfaces close and prevents the game from restoring it during normal gameplay.
 
 The actual quick-access radial selector remains fully functional.
 
 ## Configuration
 
-Version 1.0.4 adds configurable HUD behavior. Defaults preserve the established Clean UI experience while adding hotbar visibility for storage/chest interfaces.
+Version 1.0.5 simplifies hotbar configuration and expands contextual hotbar visibility across the game's shared inventory/station panel system.
 
-Available options include the gameplay hotbar, bottom-right input legend, radial prompts/indicator, compass, inventory hotbar, and storage hotbar.
+`HideGameplayHotbar` is now the single hotbar setting. When enabled, the hotbar is hidden during gameplay and automatically shown in inventory, storage/chests, crafting tables, cooking fires, spinning wheels, and other interfaces using the shared inventory/station panel.
 
 **Hide Other Player Markers (BETA - needs testing)** is also included for community testing and is OFF by default. Multiplayer/PvP testers are encouraged to report whether remote-player markers disappear from the map/compass and include relevant `[CleanUI 1.0.4 Beta][MapIcon]` lines from `UE4SS.log`.
 
@@ -35,7 +35,7 @@ Clean UI is event-driven and designed for minimal runtime overhead:
 - no watchdog
 - no continuous polling after initialization
 - widget discovery stops after successful initialization
-- inventory open/close transitions use two short delayed state updates, including the controller back/close path
+- inventory and station open/close transitions use one shared event-driven panel signal
 - persistent HUD elements that the game may restore after menu transitions are also protected with one-time render-opacity state
 - a targeted opacity hook ignores all widgets except the already-cached quick-access bar and only corrects it when the game attempts to restore it during gameplay
 
@@ -74,15 +74,13 @@ The included `enabled.txt` enables Clean UI without requiring a manual `mods.txt
 
 ## Configuration
 
-Version 1.0.4 adds configurable HUD behavior. The default settings are:
+Version 1.0.5 default settings are:
 
 - Hide Gameplay Hotbar: ON
 - Hide Bottom-right Input Legend: ON
 - Hide Radial Button Prompts: ON
 - Hide Radial Indicator: ON
 - Hide Compass: OFF
-- Show Hotbar in Inventory: ON
-- Show Hotbar in Storage: ON
 
 Edit `config.txt` and restart the game to apply changes.
 
@@ -108,7 +106,7 @@ The cleanup is not tied to a keyboard hotkey. The radial selector continues to w
 
 ## Version
 
-Current release: **1.0.4**
+Current release: **1.0.5**
 
 See [changelog.md](changelog.md) for release notes.
 
